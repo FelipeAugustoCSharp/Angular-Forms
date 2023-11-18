@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-form-debug',
@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./form-debug.component.css']
 })
 export class FormDebugComponent {
-
+  @Input() form: any;
 }
