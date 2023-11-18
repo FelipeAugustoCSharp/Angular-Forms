@@ -1,15 +1,21 @@
 <form #f="ngForm" (ngSubmit)="onSubmit(f)">
-    <div class="form-group">
+    <div class="form-group" 
+        [class.has-error]="!nome.valid && nome.touched">
         <label for="nome" class="form-label">Nome</label>
         <input type="text" class="form-control" 
             id="nome" placeholder="Nome" name="nome" [ngModel]="usuario.nome"
-            required minlength="4"> 
+            required #nome="ngModel"> 
+            
+            <p class="alert alert-danger" role="alert" *ngIf="!nome.valid && nome.touched">Nome Inválido</p>
     </div>
-    <div class="form-group">
+    <div class="form-group"
+    [class.has-error]="!email.valid && email.touched">
         <label for="email" class="form-label">Email</label>
         <input type="email" class="form-control" 
             id="email" placeholder="nome@email.com" name="email" [ngModel]="usuario.email"
-            required email> 
+            required email #email="ngModel"> 
+            
+            <p class="alert alert-danger" role="alert" *ngIf="!email.valid && email.touched">Email Inválido</p>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Submit</button>
 </form>
