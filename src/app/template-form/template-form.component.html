@@ -17,5 +17,8 @@
             
             <p class="alert alert-danger" role="alert" *ngIf="!email.valid && email.touched">Email Inválido</p>
     </div>
-    <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Submit</button>
+    <button type="submit" class="btn btn-primary" 
+    [class.btn-outline-danger]="!f.valid"
+    [class.botaozinho]="!f.valid"
+    [disabled]="!f.valid">Submit</button> 
 </form>
