@@ -1,1 +1,13 @@
-<p>template-form works!</p>
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <div class="form-group">
+        <label for="nome" class="form-label">Nome</label>
+        <input type="text" class="form-control" 
+            id="nome" placeholder="Nome" name="nome" [ngModel]="usuario.nome"> 
+    </div>
+    <div class="form-group">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" 
+            id="email" placeholder="nome@email.com" name="email" [ngModel]="usuario.email"> 
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
