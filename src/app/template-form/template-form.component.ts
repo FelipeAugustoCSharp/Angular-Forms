@@ -9,7 +9,16 @@ export class TemplateFormComponent {
   
   usuario:any = {
     nome: null,
-    email: null
+    email: null,
+    endereco:{
+      cep:'t',
+      numero:'t',
+      complemento: 't',
+      rua:'t',
+      bairro:'t',
+      cidade:'t',
+      estado:'t'
+    }
   }
 
   onSubmit(form:any){
