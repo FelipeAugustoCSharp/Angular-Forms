@@ -21,7 +21,8 @@
       </div>
     </div>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!this.formulario.valid">Submit</button>
+    <button  class="btn btn-secondary" (click)="cancelar()">Cancel</button>
   </form>
 
 <app-form-debug [form]="formulario"></app-form-debug>
