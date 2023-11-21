@@ -28,6 +28,29 @@ export class DataFormComponent implements OnInit{
     });
   }
 
+  verificaValidTouched(campo:any) {
+    return !this.formulario.controls[campo].valid && this.formulario.controls[campo].touched
+    //return !this.formulario.get(campo) && this.formulario.get(campo)?.touched;
+  }
+
+  verificaEmailInvalido(campo:any) {
+    if (this.formulario.controls['email'].errors) {
+      return this.formulario.controls['email'].errors['email']
+    }
+    //return !this.formulario.get(campo) && this.formulario.get(campo)?.touched;
+  }
+
+
+  aplicaCssErro(campo:any) {
+    return {      
+      'has-error': this.verificaValidTouched(campo),
+      'has-feedback': this.verificaValidTouched(campo)
+    };
+  }
+
+
+
+
   onSubmit(){
     console.log(this.formulario.value);
     this.http.post('https://httpbin.org/post', JSON.stringify(this.formulario.value)).subscribe(res => {
