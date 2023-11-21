@@ -51,8 +51,8 @@ export class TemplateFormComponent implements OnInit {
     cep = cep.replace(/\D/g, '');
 
     if (cep != null && cep !== '') {
-      this.cepService.consultaCEP(cep)
-      .subscribe((dados:any) => this.populaDadosForm(dados, form));
+     // this.cepService.consultaCEP(cep)
+      //.subscribe((dados:any) => this.populaDadosForm(dados, form));
     }
   }
 
