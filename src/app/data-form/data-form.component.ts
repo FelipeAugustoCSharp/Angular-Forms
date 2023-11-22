@@ -10,6 +10,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 export class DataFormComponent implements OnInit{
 
   formulario!: FormGroup;
+cidades: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -17,31 +18,49 @@ export class DataFormComponent implements OnInit{
     
   }
   ngOnInit(){
-    /*this.formulario = new FormGroup({
+   /* this.formulario = new FormGroup({
       nome: new FormControl(null),
       email: new FormControl(null),
+      endereco: new FormGroup({
+
+      })
     });*/
 
     this.formulario = this.formBuilder.group({
       nome: [null, [Validators.required, Validators.minLength(3)]],
-      email: [null, [, Validators.required, Validators.email]]
-    });
-  }
+      email: [null, [, Validators.required, Validators.email]],
 
-  verificaValidTouched(campo:any) {
+      endereco: this.formBuilder.group({
+        cep: [null, Validators.required],
+        numero: [null, Validators.required],
+        complemento:[null],
+        rua: [null, Validators.required],
+        bairro: [null, Validators.required],
+        cidade: [null, Validators.required],
+        estado: [null, Validators.required],
+    })
+  });
+}
+
+  verificaValidTouched(campo:string) {
+
+    
     return !this.formulario.controls[campo].valid && this.formulario.controls[campo].touched
     //return !this.formulario.get(campo) && this.formulario.get(campo)?.touched;
   }
 
-  verificaEmailInvalido(campo:any) {
+  verificaEmailInvalido() {
     if (this.formulario.controls['email'].errors) {
       return this.formulario.controls['email'].errors['email']
     }
+
+    
     //return !this.formulario.get(campo) && this.formulario.get(campo)?.touched;
   }
 
 
-  aplicaCssErro(campo:any) {
+  aplicaCssErro(campo:string) {
+    //console.log(this.verificaValidTouched(campo));
     return {      
       'has-error': this.verificaValidTouched(campo),
       'has-feedback': this.verificaValidTouched(campo)
