@@ -42,11 +42,6 @@ cidades: any;
 }
 
 
-  verificaValidTouched(campo:string) {
-    //return !this.formulario.controls[campo].valid && this.formulario.controls[campo].touched
-    return !this.formulario.get(campo)?.valid && this.formulario.get(campo)?.touched ? true : false;
-  }
-
   verificaEmailInvalido() {
     if (this.formulario.controls['email'].errors) {
       return this.formulario.controls['email'].errors['email']
