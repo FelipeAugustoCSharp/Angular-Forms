@@ -15,7 +15,7 @@ cidades: any;
   constructor(
     private formBuilder: FormBuilder,
     private http: HttpClient) {
-    
+
   }
   ngOnInit(){
    /* this.formulario = new FormGroup({
@@ -29,7 +29,6 @@ cidades: any;
     this.formulario = this.formBuilder.group({
       nome: [null, [Validators.required, Validators.minLength(3)]],
       email: [null, [, Validators.required, Validators.email]],
-
       endereco: this.formBuilder.group({
         cep: [null, Validators.required],
         numero: [null, Validators.required],
@@ -42,11 +41,10 @@ cidades: any;
   });
 }
 
-  verificaValidTouched(campo:string) {
 
-    
-    return !this.formulario.controls[campo].valid && this.formulario.controls[campo].touched
-    //return !this.formulario.get(campo) && this.formulario.get(campo)?.touched;
+  verificaValidTouched(campo:string) {
+    //return !this.formulario.controls[campo].valid && this.formulario.controls[campo].touched
+    return !this.formulario.get(campo)?.valid && this.formulario.get(campo)?.touched ? true : false;
   }
 
   verificaEmailInvalido() {
@@ -54,14 +52,14 @@ cidades: any;
       return this.formulario.controls['email'].errors['email']
     }
 
-    
+
     //return !this.formulario.get(campo) && this.formulario.get(campo)?.touched;
   }
 
 
   aplicaCssErro(campo:string) {
     //console.log(this.verificaValidTouched(campo));
-    return {      
+    return {
       'has-error': this.verificaValidTouched(campo),
       'has-feedback': this.verificaValidTouched(campo)
     };
