@@ -6,8 +6,13 @@ const routes: Routes = [
     path:'', pathMatch:'full', redirectTo: 'cursos'
   },
   {
-    path:'cursos', loadChildren: () => import('./cursos/cursos.module').then(m => m.CursosModule)
-  } 
+    path:'cursos', loadChildren: () => import('./cursos/cursos.module').then(PegarModulo => PegarModulo.CursosModule)
+  },
+  {
+    path: 'rxjs-poc',
+    loadChildren: () => import('./unsubscribe-rxjs/unsubscribe-rxjs.module').then(PegarModulo => PegarModulo.UnsubscribeRxjsModule)
+  }
+
 ];
 
 @NgModule({
