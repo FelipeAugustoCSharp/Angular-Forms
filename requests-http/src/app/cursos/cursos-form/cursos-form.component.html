@@ -34,14 +34,12 @@
     [ngClass]="{ 
       'is-invalid': !submitted && !errorExist('nome'),
       'is-valid': !submitted && errorExist('nome')
-      }">
+      }"
+      #entrada>
     <div class="valid-feedback" *ngIf="(!submitted && this.form.get('nome')?.hasError('required'))">
         Precisa inserir um valor
     </div>
-    <div class="valid-feedback" *ngIf="!(errorExist('nome') && errorType('nome','minlength'))" >
-      Tamanho minimo de 3 caracteres
-    </div>
-    <div class="valid-feedback" *ngIf="errorExist('nome') && errorType('nome','maxlength') ">
+    <div class="valid-feedback" *ngIf="(!errorExist('nome'))"> <!--DESCOBRIR QUANTOS CARACTERES O INPUT TEM-->
       Tamanho máximo de 10 caracteres
     </div>
   </div>

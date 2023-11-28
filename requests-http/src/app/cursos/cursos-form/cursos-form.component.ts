@@ -24,10 +24,8 @@ export class CursosFormComponent implements OnInit {
   onSubmit(){
 
     console.log(this.form);
-
-
-    console.log(!this.form.get('nome')?.errors);
-    console.log(!this.form.get('nome')?.hasError('required'))
+    // console.log(!this.form.get('nome')?.errors);
+    // console.log(!this.form.get('nome')?.hasError('required'))
     this.submitted = true    
     if (this.form.valid) {
       console.log('submitted');
@@ -46,5 +44,6 @@ export class CursosFormComponent implements OnInit {
   errorType(field:string, type: string){
     return !this.form.get(field)?.hasError(type)
   }
+
 
 }
