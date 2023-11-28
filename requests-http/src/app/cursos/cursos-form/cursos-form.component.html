@@ -1,32 +1,38 @@
-<!--form class="needs-validation" novalidate [formGroup]="form" style="padding-top: 10px">
+<form class="needs-validation" novalidate [formGroup]="form" style="padding-top: 10px">
   <div class="form-row">
     <div class="col-sm-12">
       <label for="nome">Nome do Curso</label>
       <input
         type="text"
-        class="form-control"
+        class="form-control is-invalid"
         id="nome"
         placeholder="Nome do Curso"
+        formControlName="nome"
+        [ngClass]="{ 
+      'is-invalid': !submitted && !errorExist('nome'),
+      'is-valid': !submitted && errorExist('nome')
+      }"
       />
-      <div class="invalid-feedback" *ngIf="errorExist('nome') && errorType('nome','required')" >
+      <div class="invalid-feedback" *ngIf="typeError('nome', 'required')" >
         Por favor informe um nome para o curso.
       </div>
-      <div class="invalid-feedback" *ngIf="errorExist('nome') && errorType('nome','minlength')" >
+      <div class="invalid-feedback" *ngIf="typeError('nome', 'minlength')" >
         Nome precisa ter no mínimo 3 caracteres.
       </div>
-      <div class="invalid-feedback" *ngIf="errorExist('nome') && errorType('nome','maxlength')" >
+      <div class="invalid-feedback" *ngIf="typeError('nome', 'maxlength')" >
         Nome precisa ter no máximo 10 caracteres.
       </div>
     </div>
+    
   </div>
   <div style="margin-top: 10px">
     <button type="sumit" class="btn btn-primary" (click)="onSubmit()">Salvar</button>
     <button type="button" class="btn btn-default" (click)="onCancel()">Cancelar</button>
   </div>
-</form-->
+</form>
 
 
-<form class="row g-3" novalidate [formGroup]="form">
+<!--form class="row g-3" novalidate [formGroup]="form">
   <div class="col-md-4">
     <label for="nome" class="form-label">Nome do Curso</label>
     <input type="text" class="form-control is-invalid" id="nome"
@@ -39,12 +45,12 @@
     <div class="valid-feedback" *ngIf="(!submitted && this.form.get('nome')?.hasError('required'))">
         Precisa inserir um valor
     </div>
-    <div class="valid-feedback" *ngIf="(!errorExist('nome'))"> <!--DESCOBRIR QUANTOS CARACTERES O INPUT TEM-->
-      Tamanho máximo de 10 caracteres
+    <div class="valid-feedback" *ngIf="(errorExist('nome') && form.controls['nome'].errors?.['maxlength']['actualLength'] > 10)"> 
+      Tamanho máximo de {{ form.get('nome')?.errors?.['maxlength'].requiredLength }} caracteres
     </div>
   </div>
   <div style="margin-top: 10px">
     <button type="sumit" class="btn btn-primary" (click)="onSubmit()">Salvar</button>
     <button type="button" class="btn btn-default" (click)="onCancel()">Cancelar</button>
   </div>
-</form>
+</form-->

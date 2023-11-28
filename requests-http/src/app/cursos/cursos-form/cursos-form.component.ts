@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, MaxLengthValidator, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-cursos-form',
@@ -13,9 +13,8 @@ export class CursosFormComponent implements OnInit {
 
   constructor(private fb: FormBuilder) { }
 
-  ngOnInit() {
-  
-    
+  ngOnInit() {    
+
     this.form = this.fb.group({
       nome: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(10)]]
     })
@@ -37,13 +36,13 @@ export class CursosFormComponent implements OnInit {
     this.form.reset()
      //console.log('onCancel');
   }
-
+  typeError(field:string, type: string){
+    return this.form.controls[field].hasError(type) ? true : null;
+  }
   errorExist(field:string){    
     return !this.form.get(field)?.errors
   }
   errorType(field:string, type: string){
     return !this.form.get(field)?.hasError(type)
-  }
-
-
+  }  
 }
