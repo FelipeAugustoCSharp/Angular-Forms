@@ -4,7 +4,7 @@ import { AlertModalComponent } from './alert-modal/alert-modal.component';
 
 export enum AlertTypes {
   DANGER = 'danger',
-  SUCESS = 'sucess',
+  SUCESS = 'success',
   ALERT = 'alert',
   WARNING = 'warning'
 }
@@ -18,13 +18,19 @@ export class AlertModalService {
     private modalService: BsModalService
   ) { }
 
-  private showAlert(message:string, type: string){
+  private showAlert(message:string, type: string, dismissTimeout?: number){
     const bsModalRef: BsModalRef = this.modalService.show(AlertModalComponent);
     bsModalRef.content.type = type;
     bsModalRef.content.message = message;
+
+    if (dismissTimeout) {
+      setTimeout(() => {
+        bsModalRef.hide()
+      }, dismissTimeout);
+    }
   }
   showAlertSucess(message:string){
-    this.showAlert(message, AlertTypes.SUCESS)
+    this.showAlert(message, AlertTypes.SUCESS, 1000)
   }
   showAlertDanger(message:string){
     this.showAlert(message, AlertTypes.DANGER)

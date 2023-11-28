@@ -1,4 +1,15 @@
-<div class="alert alert-{{ type }} no-margin" role="alert">
+
+<div class="modal-body">
   {{ message }}
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="onClose()"></button>
 </div>
+<div class="alert alert-{{ type }}">
+  <button type="button" class="btn btn-{{type}}" 
+  data-bs-dismiss="modal" aria-label="Close" 
+  (click)="onClose()" >Ok
+</button>
+</div>
+
+<!--div class="alert alert-{{ type }} no-margin" role="alert">
+  {{ message }}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="onClose()">Ok</button>
+</div-->

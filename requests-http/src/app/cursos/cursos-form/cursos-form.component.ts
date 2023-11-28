@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, MaxLengthValidator, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CursosService } from '../cursos.service';
+import { AlertModalService } from 'src/app/shared/alert-modal.service';
+
 
 @Component({
   selector: 'app-cursos-form',
@@ -11,12 +14,16 @@ export class CursosFormComponent implements OnInit {
   form!: FormGroup;
   submitted = false
 
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private fb: FormBuilder,
+    private service: CursosService,
+    private modalService: AlertModalService,
+    ) { }
 
   ngOnInit() {    
 
     this.form = this.fb.group({
-      nome: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(10)]]
+      nome: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(25)]]
     })
   }
 
@@ -28,7 +35,11 @@ export class CursosFormComponent implements OnInit {
     this.submitted = true    
     if (this.form.valid) {
       console.log('submitted');
-      
+      this.service.create(this.form.value).subscribe(
+        sucess =>  this.modalService.showAlertSucess('Criado com sucesso'),
+        error =>  this.modalService.showAlertDanger('Erro ao criar curso, tente novamente.'),
+        () => console.log('Request Completo')  
+      )
     }
   }
   onCancel(){
@@ -42,5 +53,7 @@ export class CursosFormComponent implements OnInit {
   errorExist(field:string){    
     return !this.form.get(field)?.errors
   }
+
+
 
 }
