@@ -42,7 +42,5 @@ export class CursosFormComponent implements OnInit {
   errorExist(field:string){    
     return !this.form.get(field)?.errors
   }
-  errorType(field:string, type: string){
-    return !this.form.get(field)?.hasError(type)
-  }  
+
 }
