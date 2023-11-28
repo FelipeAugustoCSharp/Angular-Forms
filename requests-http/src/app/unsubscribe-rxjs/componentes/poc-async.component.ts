@@ -16,6 +16,7 @@ export class PocAsyncComponent implements OnInit, OnDestroy {
   nome = 'Componente com async';
   valor$!: Observable<string>;
   valor!:string;
+
   constructor(private service: EnviarValorService) { }
 
   ngOnInit() {

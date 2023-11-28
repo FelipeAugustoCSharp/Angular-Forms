@@ -2,8 +2,13 @@ export const environment = {
     production: false,
     API: 'http://localhost:3000/cursos'
 };
+
  /*
-  //sss
+
+
+
+
+  //
  Abra o arquivo environment.prod.ts e defina as variáveis de ambiente de produção específicas para seu projeto. Considere o seguinte como exemplo:
 
 export const environment = {
