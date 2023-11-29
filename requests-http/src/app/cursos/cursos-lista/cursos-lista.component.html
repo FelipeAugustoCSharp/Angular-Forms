@@ -27,7 +27,7 @@
                 Atualizar
               </button>
 
-              <button class="btn btn-outline-danger mb-1 btn-sm" >
+              <button class="btn btn-outline-danger mb-1 btn-sm" (click)="onDelete(curso)">
                 Remover
               </button>
             </span>
@@ -59,10 +59,14 @@
   </div>
 </div>
 
+
+
+
 <ng-template #deleteModal>
   <div class="modal-body text-center">
     <p>Tem certeza que deseja remover esse curso?</p>
-    <button type="button" class="btn btn-default" >Sim</button>
-    <button type="button" class="btn btn-primary" >Nao</button>
+    <button type="button" class="btn btn-default" (click)="onConfirmDelete()" >Sim</button>
+    <button type="button" class="btn btn-primary" (click)="onDeniedDelete()" >Nao</button>
   </div>
 </ng-template>
+
