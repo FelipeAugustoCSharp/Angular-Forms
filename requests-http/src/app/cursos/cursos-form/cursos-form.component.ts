@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CursosService } from '../cursos.service';
 import { AlertModalService } from 'src/app/shared/alert-modal.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { map, switchMap } from 'rxjs';
+
 
 
 @Component({
