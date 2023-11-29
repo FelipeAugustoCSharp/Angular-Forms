@@ -68,14 +68,28 @@ export class CursosFormComponent implements OnInit {
     this.submitted = true    
     if (this.form.valid) {
       console.log('submitted');
-      this.service.create(this.form.value).subscribe(
-        sucess =>  {
-          this.modalService.showAlertSucess('Criado com sucesso')
-          this.router.navigate(['/cursos'])
-        },
-        error =>  this.modalService.showAlertDanger('Erro ao criar curso, tente novamente.'),
-        () => console.log('Request Completo')  
-      )
+      
+      if (this.form.value.id) {
+        this.service.update(this.form.value).subscribe(
+          sucess =>  {
+            this.modalService.showAlertSucess('Curso atualizado com sucesso')
+            this.router.navigate(['/cursos'])
+          },
+          error => this.modalService.showAlertDanger('Erro ao atualizar curso, tente novamente.'),
+          () => console.log('Atualizado com sucesso')
+          
+        )
+      }else{
+        this.service.create(this.form.value).subscribe(
+          sucess =>  {
+            this.modalService.showAlertSucess('Criado com sucesso');
+            this.router.navigate(['/cursos']);
+          },
+          error =>  this.modalService.showAlertDanger('Erro ao criar curso, tente novamente.'),
+          () => console.log('Request Completo')  
+        )
+      }
+      
     }
   }
   onCancel(){

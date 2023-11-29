@@ -17,7 +17,7 @@ export class CursosService {
   list(){
     return this.http.get<Curso[]>(this.API)
     .pipe(
-      delay(2000),
+      delay(1000),
       tap(console.log)
     )
   }
@@ -27,5 +27,8 @@ export class CursosService {
 
   create(curso: any){
     return this.http.post(this.API, curso).pipe(take(1))
+  }
+  update(curso:any){
+    return this.http.put(`${this.API}/${curso.id}`, curso).pipe(take(1))
   }
 }
