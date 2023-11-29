@@ -1,6 +1,7 @@
+<div class="mb-3"  style="margin-top: 10px;">
+  <label for="formFileMultiple" class="form-label">Escolha</label>
+  <input class="form-control" type="file" id="formFileMultiple"  (click)="onChanges($event)" multiple >
+</div>
 <div style="margin-top: 10px;">
-  <div class="mb-3">
-    <label for="formFile" class="form-label" id="customFileLabel">Selecionar arquivo</label> 
-    <input class="form-control" type="file" id="formFile" (change)="onChange($event)"/>
-  </div>
+  <button type="button" class="btn btn-primary" [disabled]="!files" (click)="onUpload()" >Enviar</button>
 </div>
