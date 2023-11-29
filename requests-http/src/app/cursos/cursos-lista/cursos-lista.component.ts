@@ -1,11 +1,12 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
-import { CursosService } from '../cursos.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+// import { CursosService } from '../cursos.service';
 import { Curso } from '../curso';
 import { EMPTY, Observable, Subject, catchError, empty, switchMap, take } from 'rxjs';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { AlertModalComponent } from 'src/app/shared/alert-modal/alert-modal.component';
+// import { AlertModalComponent } from 'src/app/shared/alert-modal/alert-modal.component';
 import { AlertModalService } from 'src/app/shared/alert-modal.service';
-import { ActivatedRoute, Route, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Cursos2Service } from '../cursos2.service';
 
 @Component({
   selector: 'app-cursos-lista',
@@ -27,7 +28,7 @@ export class CursosListaComponent implements OnInit, OnDestroy {
 
   
   constructor(
-    private service: CursosService,
+    private service: Cursos2Service,
     private modalService: BsModalService,
     private alertServices: AlertModalService,
     private router: Router,
@@ -87,7 +88,7 @@ export class CursosListaComponent implements OnInit, OnDestroy {
       take(1),
       switchMap(resultado => resultado ? this.service.remove(curso.id) : EMPTY)
       )
-      .subscribe(
+      .subscribe( 
         next => {
           this.onRefresh()
         },

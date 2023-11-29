@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CursosService } from '../cursos.service';
+// import { CursosService } from '../cursos.service';
 import { AlertModalService } from 'src/app/shared/alert-modal.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Cursos2Service } from '../cursos2.service';
 
 
 
@@ -18,7 +19,7 @@ export class CursosFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private service: CursosService,
+    private service: Cursos2Service,
     private modalService: AlertModalService,
     private router: Router,
     private route: ActivatedRoute
@@ -61,6 +62,7 @@ export class CursosFormComponent implements OnInit {
   // }
 
   onSubmit(){
+    
     console.log(this.form);
     // console.log(!this.form.get('nome')?.errors);
     // console.log(!this.form.get('nome')?.hasError('required'))

@@ -40,6 +40,9 @@ export class CursosService {
     }
     return this.create(curso)
   }
+  verifyIfExists(){
+    //verificar se o nome X já existe na lista/banco de dados
+  }
   remove(id:number){
     return this.http.delete(`${this.API}/${id}`).pipe(take(1))
   }

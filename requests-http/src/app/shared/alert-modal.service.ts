@@ -46,6 +46,7 @@ export class AlertModalService {
     }
     if (cancelTxt) {
       bsModalRef.content.cancelTxt = cancelTxt;
+      
     }
     console.log('entrou');
     return (<ConfirmModalComponent>bsModalRef.content).confirmResult
