@@ -25,10 +25,17 @@ export class CursosService {
     return this.http.get<Curso>(`${this.API}/${id}`).pipe(take(1))
   }
 
-  create(curso: any){
+  private create(curso: any){
     return this.http.post(this.API, curso).pipe(take(1))
   }
-  update(curso:any){
+  private update(curso:any){
     return this.http.put(`${this.API}/${curso.id}`, curso).pipe(take(1))
+  }
+
+  save(curso:any){
+    if(curso.id){
+      return this.update(curso)
+    }
+    return this.create(curso)
   }
 }

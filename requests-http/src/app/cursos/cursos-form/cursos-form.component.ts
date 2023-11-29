@@ -61,14 +61,33 @@ export class CursosFormComponent implements OnInit {
   // }
 
   onSubmit(){
-
     console.log(this.form);
     // console.log(!this.form.get('nome')?.errors);
     // console.log(!this.form.get('nome')?.hasError('required'))
     this.submitted = true    
     if (this.form.valid) {
       console.log('submitted');
+
+
+    let msgSuccess = 'Curso criado com sucesso!';
+    let msgError = 'Erro ao criar curso, tente novamente.'
+    
+    if (this.form.value.id) {
+      msgSuccess = 'Curso atualizado com sucesso!';
+      msgError = 'Erro ao atualizar curso, tente novamente.'
+    }
       
+      this.service.save(this.form.value).subscribe(
+        next => {
+          this.modalService.showAlertSucess(msgSuccess);
+            this.router.navigate(['/cursos'])
+        },
+        error => {
+          this.modalService.showAlertSucess(msgError);
+        },
+        () => console.log('Works')
+      )
+      /*Atualizar Item
       if (this.form.value.id) {
         this.service.update(this.form.value).subscribe(
           sucess =>  {
@@ -79,7 +98,8 @@ export class CursosFormComponent implements OnInit {
           () => console.log('Atualizado com sucesso')
           
         )
-      }else{
+      }else{ //CRIAR Item
+        //VERIFICAR SE O ITEM JÁ EXISTE
         this.service.create(this.form.value).subscribe(
           sucess =>  {
             this.modalService.showAlertSucess('Criado com sucesso');
@@ -88,7 +108,7 @@ export class CursosFormComponent implements OnInit {
           error =>  this.modalService.showAlertDanger('Erro ao criar curso, tente novamente.'),
           () => console.log('Request Completo')  
         )
-      }
+      }*/
       
     }
   }
