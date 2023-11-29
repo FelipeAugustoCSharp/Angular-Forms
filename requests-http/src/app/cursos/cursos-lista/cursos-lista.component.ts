@@ -67,7 +67,10 @@ export class CursosListaComponent implements OnInit, OnDestroy {
   }
 
   onEdit(id:number){
-    this.router.navigate(['editar',id],{relativeTo: this.route})
+    if (id !== null) {
+        this.router.navigate(['editar',id],{relativeTo: this.route})
+    }
+    
   }
 
   ngOnDestroy() {
