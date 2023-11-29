@@ -17,7 +17,7 @@ export class CursosListaComponent implements OnInit, OnDestroy {
 
 
   deleteModalRef?: BsModalRef;
-  @ViewChild('deleteModal') deleteModal:any;
+  // @ViewChild('deleteModal') deleteModal:any;
 
 
   //cursos: Curso[] = [];
@@ -90,17 +90,8 @@ export class CursosListaComponent implements OnInit, OnDestroy {
       .subscribe(
         next => {
           this.onRefresh()
-          this.deleteModalRef?.hide()
         },
         error => this.alertServices.showAlertDanger(' Erro ao remover curso. Tente novamente mais tarde')
       )
-      
-   
     }
-  onConfirmDelete(){
-    
-  }
-  onDeniedDelete(){
-    this.deleteModalRef?.hide()
-  }
 }
