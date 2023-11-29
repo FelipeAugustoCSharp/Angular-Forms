@@ -1,14 +1,6 @@
 {
   "cursos": [
     {
-      "id": 2,
-      "nome": "Javascript"
-    },
-    {
-      "id": 3,
-      "nome": "Manga"
-    },
-    {
       "id": 4,
       "nome": "Mosquinha"
     },
