@@ -62,6 +62,8 @@ export class CursosFormComponent implements OnInit {
   // }
 
   onSubmit(){
+  
+    console.log();
     
     console.log(this.form);
     // console.log(!this.form.get('nome')?.errors);

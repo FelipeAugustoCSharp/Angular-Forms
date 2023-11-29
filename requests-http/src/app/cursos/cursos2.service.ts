@@ -12,4 +12,8 @@ export class Cursos2Service extends CrudService<Curso>{
 constructor(protected override http: HttpClient,) {
   super(http, `${environment.API}cursos`)
  }
+
+
+  //VERIFICAR SE JÁ EXISTE O NOME NA ISTA ANTES DE ADICIONAR
 }
+

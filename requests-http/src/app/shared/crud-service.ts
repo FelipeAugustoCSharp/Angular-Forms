@@ -38,10 +38,7 @@ export class CrudService<T> {
   }
 
 
-  verifyIfExists(record:any){
-    
-    //VERIFICAR SE JÁ EXISTE O NOME NA ISTA ANTES DE ADICIONAR
-  }
+
 
   
   remove(id:number){
