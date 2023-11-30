@@ -1,6 +1,7 @@
 export const environment = {
-    production: false,
-    API: 'http://localhost:3000/cursos'
+    production: true,
+    API: '/',
+    BASE_URL: ''
 };
 
  /*
