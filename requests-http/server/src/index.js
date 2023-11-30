@@ -23,7 +23,7 @@ app.post('/upload',multiPartMiddleWare, (req, res) => {
 })
 
 app.use((err,req, res, next) => {
-    res.json({erromensage: err+' Tesss'})
+    res.json({erromensage: err.message})
 })
 app.listen(8000, () => {
     console.log('Servidor porta 8000');

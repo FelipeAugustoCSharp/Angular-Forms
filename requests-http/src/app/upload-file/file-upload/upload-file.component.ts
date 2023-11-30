@@ -10,7 +10,7 @@ import { delay, tap } from 'rxjs';
 export class UploadFileComponent implements OnInit {
 
 
-  files!: Set<File>
+  files?: Set<File>
 
 
   constructor(private service: UploadFileService) { }
@@ -19,17 +19,21 @@ export class UploadFileComponent implements OnInit {
   }
 
   onChanges(event:any) {
-    const selectedFiles = <FileList>event.srcElement.files
-    const fileNames = []
     this.files = new Set();
+    const fileNames = []
+    const selectedFiles = <FileList>event.srcElement.files
+    
+
     for (let i = 0; i < selectedFiles.length; i++) {
-      fileNames.push(selectedFiles[i].name)
       this.files.add(selectedFiles[i])
+      fileNames.push(selectedFiles[i].name)
     }
+    console.log('fora do for',fileNames);
+    
   }
 
   onUpload() {
-    if (this.files ) {
+    if (this.files && this.files.size > 0 ) {
       this.service.upload(this.files, 'http://localhost:8000/upload')
       .pipe(
         delay(500),
