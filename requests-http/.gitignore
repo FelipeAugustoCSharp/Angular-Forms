@@ -46,3 +46,5 @@ Thumbs.db
 
 /server/node_modules
 /server/uploads
+/proxy.conf.js
+/proxy.conf.json
