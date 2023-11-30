@@ -15,15 +15,16 @@ const corsOptions = {
 
 app.use(cors(corsOptions))
 
-const multiPartMiddleWare = multiPart({uploadDir: '../uploads'});
+const multiPartMiddleWare = multiPart({uploadDir: './uploads'});
 app.post('/upload',multiPartMiddleWare, (req, res) => {
     const files = req.files;
     console.log(files);
     req.json({message: files})
 })
 
-app.use((err,req, res, next) => res.json({erro: erro.message}))
-
+app.use((err,req, res, next) => {
+    res.json({erromensage: err+' Tesss'})
+})
 app.listen(8000, () => {
     console.log('Servidor porta 8000');
 })
