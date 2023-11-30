@@ -2,6 +2,15 @@
   <label for="tes" class="form-label" >Escolha</label>
   <input class="form-control" type="file" id="tes" multiple (change)="onChanges($event)">
 </div>
+<div class="progress">
+  <div class="progress-bar"
+       [style.width]="progress + '%'"
+       role="progressbar" 
+       >
+       {{progress}}
+      </div>
+</div>
 <div style="margin-top: 10px;">
   <button type="button" class="btn btn-primary" [disabled]="!files" (click)="onUpload()" >Enviar</button>
 </div>
+

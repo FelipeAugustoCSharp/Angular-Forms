@@ -19,6 +19,10 @@
     {
       "id": 6,
       "nome": "Bananas"
+    },
+    {
+      "id": 7,
+      "nome": "Uva"
     }
   ]
 }
