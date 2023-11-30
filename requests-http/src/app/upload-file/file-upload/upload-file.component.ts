@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UploadFileService } from '../upload-file.service';
-import { delay, tap } from 'rxjs';
+import { delay, take, tap } from 'rxjs';
 
 @Component({
   selector: 'app-upload-file',
@@ -28,16 +28,17 @@ export class UploadFileComponent implements OnInit {
       this.files.add(selectedFiles[i])
       fileNames.push(selectedFiles[i].name)
     }
-    console.log('fora do for',fileNames);
+    console.log(fileNames);
     
   }
 
   onUpload() {
     if (this.files && this.files.size > 0 ) {
-      this.service.upload(this.files, 'http://localhost:8000/upload')
+      // this.service.upload(this.files, 'http://localhost:8000/upload')
+      this.service.upload(this.files, '/api/upload')
       .pipe(
-        delay(500),
-        tap(() => console.log('testyando'))        
+        delay(500), 
+        take(1)
       )
       .subscribe(response => console.log('upload concluido'),
       err => console.log(err)      
