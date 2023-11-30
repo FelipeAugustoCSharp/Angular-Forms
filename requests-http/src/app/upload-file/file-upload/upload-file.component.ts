@@ -10,7 +10,9 @@ import { filterResponse, uploadProgress } from 'src/app/shared/rxjs-operators';
   templateUrl: './upload-filecomponent.html',
   styleUrls: ['./upload-file.component.css']
 })
-export class UploadFileComponent implements OnInit {
+  export class UploadFileComponent implements OnInit {
+
+
 
 
   files?: Set<File>
@@ -20,6 +22,7 @@ export class UploadFileComponent implements OnInit {
 
   ngOnInit() {
   }
+  
 
   onChanges(event:any) {
     this.files = new Set();
@@ -61,10 +64,21 @@ export class UploadFileComponent implements OnInit {
       // },
       // err => console.log(err)      
       // )      
-    }
-  
-    
-    
+      }
+  }  
+
+  downloadPdf() {
+    this.service.download(`${environment.API}/downloadPdf`)
+    .subscribe((response: any) => console.log(response))
   }
+  downloadExcel() {
+    
+    console.log(this.service.download(`${environment.API}/downloadExcel`));
+    // this.service.download(`http://localhost:8000/upload/downloadPdf`)
+    this.service.download(`${environment.API}/downloadExcel`)
+    .subscribe((response: any) => console.log(response))
+  }
+
+  
 
 }

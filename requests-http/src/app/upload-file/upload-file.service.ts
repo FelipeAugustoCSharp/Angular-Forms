@@ -18,5 +18,10 @@ constructor(private http: HttpClient) { }
       reportProgress: true
     })
   }
-
+  
+  download(url:string){
+    return this.http.get(url, {
+      responseType: 'blob',
+    })
+  }
 }
