@@ -9,4 +9,4 @@ export const environmentJson = {
     API: 'http://localhost:3000/',  //Rodar o Json server
     BASE_URL: '/api'
 };
-//tt
+//tte
