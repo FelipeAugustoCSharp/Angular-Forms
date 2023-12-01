@@ -11,23 +11,23 @@
         />
       </div>
       <div class="col-auto">
-        <button class="btn btn-lg btn-success" >Pesquisar</button>
+        <button class="btn btn-lg btn-success" (click)="onSearch()">Pesquisar</button>
       </div>
     </div>
   </div>
   <div class="search-list">
-    <h3> Registros encontrados.</h3>
+    <h3>  {{ total }} Registros encontrados.</h3>
     <table class="table" id="myTable">
       <thead>
         <tr>
           <th>Nome</th>
-          <th>Versão</th>
+          <th>Versao</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Html</td>
-          <td>WebDevelopment</td>
+        <tr *ngFor="let result of results$ | async">
+          <td>{{result.name}}</td>
+          <td>{{result.version}}</td>
         </tr>
       </tbody>
     </table>
