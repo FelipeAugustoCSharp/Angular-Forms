@@ -69,16 +69,7 @@ import { environmentNode } from 'src/environments/environment.development';
   downloadPdf() {
     this.service.download(`${environmentNode.API}/downloadPdf`)
     .subscribe((response: any) => {
-      const file = new Blob([response], {
-        type: response.type
-      });
-      const  blob =window.URL.createObjectURL(file);
-      const link = document.createElement('a');
-      link.href = blob;
-      link.download = 'spotifyyear.jpeg';
-      link.click();
-      window.URL.revokeObjectURL(blob);
-      link.remove()
+      this.service.handleFire(response, 'twitter.png ')
     })
   }
   downloadExcel() {
@@ -87,16 +78,7 @@ import { environmentNode } from 'src/environments/environment.development';
     // this.service.download(`http://localhost:8000/upload/downloadPdf`)
     this.service.download(`${environmentNode.API}/downloadExcel`)
     .subscribe((response: any) => {
-      const file = new Blob([response], {
-        type: response.type
-      });
-      const  blob =window.URL.createObjectURL(file);
-      const link = document.createElement('a');
-      link.href = blob;
-      link.download = 'twitter.png';
-      link.click();
-      window.URL.revokeObjectURL(blob);
-      link.remove()
+      this.service.handleFire(response, 'spotifyyear.jpeg ')
     })
   }
 

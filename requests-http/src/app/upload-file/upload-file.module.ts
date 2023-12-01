@@ -8,7 +8,7 @@ import { UploadFileRoutingModule } from './upload-file-routing.module';
   declarations: [],
   imports: [
     CommonModule,
-    UploadFileRoutingModule
+    UploadFileRoutingModule,
   ]
 })
 export class UploadFileModule { }

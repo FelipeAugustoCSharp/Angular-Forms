@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { SharedModule } from './shared/shared.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CursosModule } from './cursos/cursos.module';
 @NgModule({
   declarations: [	
@@ -18,6 +18,7 @@ import { CursosModule } from './cursos/cursos.module';
     FormsModule,
     CursosModule,
     ModalModule.forRoot(),
+    ReactiveFormsModule
 
   ],
   providers: [SharedModule],
