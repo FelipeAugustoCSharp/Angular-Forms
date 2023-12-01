@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UploadFileService } from '../upload-file.service';
-import { environment } from 'src/environments/environment';
+// import { environment } from 'src/environments/environment';
 import { filterResponse, uploadProgress } from 'src/app/shared/rxjs-operators';
+import { environmentNode } from 'src/environments/environment.development';
 
 @Component({
   selector: 'app-upload-file',
@@ -39,7 +40,7 @@ import { filterResponse, uploadProgress } from 'src/app/shared/rxjs-operators';
   onUpload() {
     if (this.files && this.files.size > 0 ) {
       // this.service.upload(this.files, 'http://localhost:8000/upload')
-      this.service.upload(this.files, `${environment.BASE_URL}/upload`)
+      this.service.upload(this.files, `${environmentNode.BASE_URL}/upload`)
       .pipe(
         uploadProgress(progress => {
           console.log(progress);
@@ -66,19 +67,36 @@ import { filterResponse, uploadProgress } from 'src/app/shared/rxjs-operators';
   }  
 
   downloadPdf() {
-    this.service.download(`${environment.API}/downloadPdf`)
-    .subscribe((response: any) => console.log(response))
-  }
-  downloadExcel() {
-    
-    console.log(this.service.download(`${environment.API}/downloadExcel`));
-    // this.service.download(`http://localhost:8000/upload/downloadPdf`)
-    this.service.download(`${environment.API}/downloadExcel`)
+    this.service.download(`${environmentNode.API}/downloadPdf`)
     .subscribe((response: any) => {
       const file = new Blob([response], {
         type: response.type
       });
-      const  blob =window.URL.createObjectURL(file)
+      const  blob =window.URL.createObjectURL(file);
+      const link = document.createElement('a');
+      link.href = blob;
+      link.download = 'spotifyyear.jpeg';
+      link.click();
+      window.URL.revokeObjectURL(blob);
+      link.remove()
+    })
+  }
+  downloadExcel() {
+    
+    console.log(this.service.download(`${environmentNode.API}/downloadExcel`));
+    // this.service.download(`http://localhost:8000/upload/downloadPdf`)
+    this.service.download(`${environmentNode.API}/downloadExcel`)
+    .subscribe((response: any) => {
+      const file = new Blob([response], {
+        type: response.type
+      });
+      const  blob =window.URL.createObjectURL(file);
+      const link = document.createElement('a');
+      link.href = blob;
+      link.download = 'twitter.png';
+      link.click();
+      window.URL.revokeObjectURL(blob);
+      link.remove()
     })
   }
 

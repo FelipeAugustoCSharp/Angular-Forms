@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { CrudService } from '../shared/crud-service';
 import { Curso } from './curso';
 import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
+// import { environment } from 'src/environments/environment';
+import { environmentJson } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import { environment } from 'src/environments/environment';
 export class Cursos2Service extends CrudService<Curso>{
 
 constructor(protected override http: HttpClient) {
-  super(http, `${environment.API}cursos`)
+  super(http, `${environmentJson.API}cursos`)
  }
 
 

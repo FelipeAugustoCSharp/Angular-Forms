@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Curso } from './curso';
 import { delay, take, tap } from 'rxjs';
-import { environment } from 'src/environments/environment.development';
+import { environmentJson } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class CursosService {
 
   constructor(private http: HttpClient) { }
 
-  private readonly API:string = `${environment.API}cursos`
+  private readonly API:string = `${environmentJson.API}cursos`
 
   list(){
     return this.http.get<Curso[]>(this.API)
@@ -27,7 +27,8 @@ export class CursosService {
   }
 
   private create(curso: any){
-    return this.http.post(this.API, curso).pipe(take(1))
+    return this.http.post(`${this.API}createUser/`, curso).pipe(take(1))
+    // return this.http.post(this.API, curso).pipe(take(1))
   }
 
   private update(curso:any){
