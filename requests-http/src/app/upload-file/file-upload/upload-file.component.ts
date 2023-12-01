@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UploadFileService } from '../upload-file.service';
-import { delay, take, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { HttpEvent, HttpEventType } from '@angular/common/http';
 import { filterResponse, uploadProgress } from 'src/app/shared/rxjs-operators';
 
 @Component({
@@ -76,7 +74,12 @@ import { filterResponse, uploadProgress } from 'src/app/shared/rxjs-operators';
     console.log(this.service.download(`${environment.API}/downloadExcel`));
     // this.service.download(`http://localhost:8000/upload/downloadPdf`)
     this.service.download(`${environment.API}/downloadExcel`)
-    .subscribe((response: any) => console.log(response))
+    .subscribe((response: any) => {
+      const file = new Blob([response], {
+        type: response.type
+      });
+      const  blob =window.URL.createObjectURL(file)
+    })
   }
 
   

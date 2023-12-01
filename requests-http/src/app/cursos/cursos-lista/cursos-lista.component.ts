@@ -7,6 +7,8 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { AlertModalService } from 'src/app/shared/alert-modal.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Cursos2Service } from '../cursos2.service';
+import { environment } from 'src/environments/environment.development';
+import { CursosService } from '../cursos.service';
 
 @Component({
   selector: 'app-cursos-lista',
@@ -41,14 +43,13 @@ export class CursosListaComponent implements OnInit, OnDestroy {
     this.onRefresh();
   }
   onRefresh(){
-    this.cursos$ = this.service.list()
+    this.cursos$ = this.service.list(`${environment.API}cursos`)
     .pipe(
       catchError(error => {
         console.log(error);
         //this.error$.next(true);
         this.handleError();
-        return empty()
-        
+        return EMPTY;
       })
     );
     // this.service.list()

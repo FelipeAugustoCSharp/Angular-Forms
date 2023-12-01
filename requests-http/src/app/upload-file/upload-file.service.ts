@@ -21,7 +21,7 @@ constructor(private http: HttpClient) { }
   
   download(url:string){
     return this.http.get(url, {
-      responseType: 'blob',
+      responseType: 'blob' as 'json',
     })
   }
 }

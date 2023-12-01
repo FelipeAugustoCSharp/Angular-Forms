@@ -22,11 +22,13 @@ app.post('/upload',multiPartMiddleWare, (req, res) => {
     res.json({message: files})
 })
 
-app.get('/downloadExcel', (req, res) =>{                   //PROBLEMA AQUI 
-    res.download('./uploads/Angular-Forms-main.zip');      //PROBLEMA AQUI 
-});                                                        //PROBLEMA AQUI 
-app.get('/downloadPdf', (req, res) =>{                     //PROBLEMA AQUI 
-    res.download('./uploads/twitter.png');                 //PROBLEMA AQUI 
+app.get('/downloadExcel', (req, res) =>{
+    res.set('Access-Control-Allow-Origin', '*');                   //PROBLEMA AQUI
+    res.download('./uploads/Angular-Forms-main.zip');      //PROBLEMA AQUI
+});                                                        //PROBLEMA AQUI
+app.get('/downloadPdf', (req, res) =>{
+    res.set('Access-Control-Allow-Origin', '*');                  //PROBLEMA AQUI
+    res.download('./uploads/twitter.png');                 //PROBLEMA AQUI
 });
 
 app.use((err,req, res, next) => {
