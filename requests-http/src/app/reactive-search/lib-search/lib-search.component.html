@@ -1,0 +1,35 @@
+<div class="container search-table">
+  <div class="search-box">
+    <div class="row">
+      <div class="col-md-9">
+        <input
+          type="text"
+          id="myInput"
+          class="form-control"
+          placeholder="Pesquisar libs"
+          [formControl]="queryField"
+        />
+      </div>
+      <div class="col-auto">
+        <button class="btn btn-lg btn-success" >Pesquisar</button>
+      </div>
+    </div>
+  </div>
+  <div class="search-list">
+    <h3> Registros encontrados.</h3>
+    <table class="table" id="myTable">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Versão</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Html</td>
+          <td>WebDevelopment</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
